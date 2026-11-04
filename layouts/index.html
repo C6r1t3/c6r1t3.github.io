@@ -1,6 +1,18 @@
 {{ define "main" }}
 <div class="site-layout home-shell">
 <div class="site-main">
+    <section class="home-intro">
+        <p class="eyebrow">CTF WRITE-UP</p>
+        <h1>C6r1t3's Home</h1>
+        <p>Hi there! I keep a few write-ups for CTF challenges I solve whenever I have free time — or not.</p>
+        <form class="home-search" action="{{ "/search/" | relURL }}" method="get">
+            <label for="home-search-input">Search posts</label>
+            <div>
+                <input id="home-search-input" name="q" type="search" placeholder="Search by title, tag, or technique">
+                <button type="submit">Search</button>
+            </div>
+        </form>
+    </section>
     {{ $posts := where site.RegularPages "Type" "in" site.Params.mainSections }}
     {{ $posts = where $posts "Draft" false }}
     <section class="content-card latest-posts">
@@ -19,7 +31,7 @@
             {{ end }}
         </div>
         {{ else }}
-        <p class="empty-state">New writeups are being prepared.</p>
+        <p class="empty-state">No published posts yet.</p>
         {{ end }}
     </section>
 </div>

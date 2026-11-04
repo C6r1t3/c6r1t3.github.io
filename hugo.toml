@@ -9,6 +9,7 @@ home = ['HTML', 'RSS', 'JSON']
 
 [params]
 author = 'C6r1t3'
+mainSections = ['posts']
 defaultTheme = 'auto'
 ShowReadingTime = true
 ShowToc = true
@@ -69,7 +70,25 @@ url = '/posts/'
 weight = 10
 
 [[menu.main]]
+identifier = 'categories'
+name = 'Categories'
+url = '/categories/'
+weight = 20
+
+[[menu.main]]
+identifier = 'archives'
+name = 'Archives'
+url = '/archives/'
+weight = 30
+
+[[menu.main]]
 identifier = 'about'
 name = 'About'
 url = '/about/'
-weight = 20
+weight = 40
+
+[[menu.main]]
+identifier = 'search'
+name = 'Search'
+url = '/search/'
+weight = 50

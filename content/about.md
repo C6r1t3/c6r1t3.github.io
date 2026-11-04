@@ -1,13 +1,14 @@
 +++
 title = 'About'
 layout = 'single'
+ShowToc = false
 +++
 
 ## C6r1t3's here!
 
-![C6r1t3 avatar](/images/avt.jpg)
+![C6r1t3 avatar](/images/h4ck.jpg)
 
-I am a second-year Cybersecurity student at the Academy of Cryptography Techniques. This site is where I document CTF writeups and security notes.
+I am a second-year Cybersecurity student at the Academy of Cryptography Techniques.
 
 Find me there:
 

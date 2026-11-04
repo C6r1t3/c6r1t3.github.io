@@ -144,6 +144,64 @@ a:hover {
     padding: 0;
 }
 
+.home-intro {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.25rem;
+    padding: 0 0 1.5rem;
+}
+
+.home-intro h1 {
+    margin: 0;
+}
+
+.home-intro > p:not(.eyebrow) {
+    color: var(--secondary);
+    margin: .5rem 0 1.25rem;
+}
+
+.eyebrow {
+    color: var(--accent);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    margin: 0 0 .5rem;
+}
+
+.home-search label {
+    display: block;
+    font-size: .82rem;
+    font-weight: 600;
+    margin-bottom: .35rem;
+}
+
+.home-search > div {
+    display: flex;
+    gap: .5rem;
+}
+
+.home-search input {
+    background: var(--theme);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    flex: 1 1 auto;
+    color: var(--primary);
+    min-width: 0;
+    padding: .65rem .75rem;
+    width: 100%;
+}
+
+.home-search button {
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 5px;
+    color: #10141b;
+    cursor: pointer;
+    flex: 0 0 auto;
+    font-weight: 700;
+    padding: .65rem .9rem;
+    white-space: nowrap;
+}
+
 .site-layout {
     align-items: start;
     display: grid;
@@ -342,6 +400,20 @@ a:hover {
     padding: .12em .3em;
 }
 
+.entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+    margin-top: .75rem;
+}
+
+.entry-tags a {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: .75rem;
+    padding: .15rem .5rem;
+}
+
 @media (max-width: 760px) {
     .site-layout {
         grid-template-columns: 1fr;
@@ -361,14 +433,14 @@ a:hover {
     gap: .75rem;
 }
 
-.post-content img[src*="/images/avt.jpg"] {
+.post-content img[src*="/images/h4ck.jpg"] {
     display: block;
     margin: 0 auto 1.5rem;
     border: 1px solid var(--border);
     border-radius: 50%;
-    height: 96px;
+    height: 128px;
     object-fit: cover;
-    width: 96px;
+    width: 128px;
 }
 
 .post-content img {

@@ -1,4 +1,6 @@
 {{ define "main" }}
+<div class="site-layout">
+<div class="site-main">
 <header class="page-header">
     <h1>{{ .Title }}</h1>
 </header>
@@ -11,6 +13,9 @@
     {{ end }}
 </ul>
 {{ else }}
-<p class="empty-state">New writeups are being prepared.</p>
+<p class="empty-state">No published writeups are assigned to this taxonomy yet.</p>
 {{ end }}
+</div>
+{{ partial "site_sidebar.html" . }}
+</div>
 {{ end }}

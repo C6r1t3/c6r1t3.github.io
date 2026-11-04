@@ -1,4 +1,6 @@
 {{ define "main" }}
+<div class="site-layout">
+<div class="site-main search-page">
 <header class="page-header">
     <h1>{{ .Title }}</h1>
 </header>
@@ -10,4 +12,17 @@
 {{ if eq (len site.RegularPages) 0 }}
 <p class="empty-state">New writeups are being prepared.</p>
 {{ end }}
+<script>
+window.addEventListener("load", () => {
+    const query = new URLSearchParams(window.location.search).get("q");
+    const input = document.getElementById("searchInput");
+    if (query && input) {
+        input.value = query;
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+});
+</script>
+</div>
+{{ partial "site_sidebar.html" . }}
+</div>
 {{ end }}

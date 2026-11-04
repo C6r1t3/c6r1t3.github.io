@@ -1,9 +1,12 @@
 [
-{{- range $index, $page := where site.RegularPages "Draft" false }}
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Draft" false }}
+{{- range $index, $page := $pages }}
     {{- if $index }},{{ end }}
     {{- dict
         "title" $page.Title
-        "summary" $page.Summary
+        "summary" ($page.Summary | plainify | htmlUnescape)
+        "content" ($page.Plain | plainify | htmlUnescape)
         "permalink" $page.Permalink
         "categories" ($page.Params.categories | default (slice))
         "platforms" ($page.Params.platforms | default (slice))

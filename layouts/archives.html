@@ -1,4 +1,6 @@
 {{ define "main" }}
+<div class="site-layout">
+<div class="site-main">
 <header class="page-header">
     <h1>{{ .Title }}</h1>
 </header>
@@ -18,4 +20,7 @@
 {{ else }}
 <p class="empty-state">New writeups are being prepared.</p>
 {{ end }}
+</div>
+{{ partial "site_sidebar.html" . }}
+</div>
 {{ end }}
