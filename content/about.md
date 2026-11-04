@@ -3,8 +3,15 @@ title = 'About'
 layout = 'single'
 +++
 
+## C6r1t3's here!
+
 ![C6r1t3 avatar](/images/avt.jpg)
 
-I am a second-year Cybersecurity student at the Academy of Cryptography Techniques, documenting CTF writeups and security notes focused on Digital Forensics, Steganography, Misc / OSINT, and Reverse Engineering.
+I am a second-year Cybersecurity student at the Academy of Cryptography Techniques. This site is where I document CTF writeups and security notes.
 
-{{< social-links >}}
+Find me there:
+
+- [Discord](https://discord.com/users/1162725668853923900)
+- [GitHub](https://github.com/C6r1t3)
+- [LinkedIn](https://www.linkedin.com/in/canhsieubanh/)
+- [Email](mailto:vcp171107@gmail.com)

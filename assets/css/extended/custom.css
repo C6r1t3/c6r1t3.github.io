@@ -361,14 +361,14 @@ a:hover {
     gap: .75rem;
 }
 
-.post-content > p:first-child img[src*="/images/avt.jpg"] {
+.post-content img[src*="/images/avt.jpg"] {
     display: block;
     margin: 0 auto 1.5rem;
     border: 1px solid var(--border);
     border-radius: 50%;
-    height: 160px;
+    height: 96px;
     object-fit: cover;
-    width: 160px;
+    width: 96px;
 }
 
 .post-content img {
