@@ -1,0 +1,4 @@
+baseURL = 'https://example.org/'
+locale = 'vi'
+title = "C6r1t3"
+theme = "PaperMod"
