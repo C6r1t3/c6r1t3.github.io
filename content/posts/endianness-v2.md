@@ -2,18 +2,19 @@
 date = '2026-11-04T10:56:29+07:00'
 draft = false
 title = 'Endianness V2'
+summary = 'Khôi phục ảnh bằng cách hoán đổi thứ tự byte theo định dạng của hệ thống 32-bit.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['CTF Writeup']
+categories = ['PicoCTF']
 +++
 
-# Description
+## Description
 
 Here's a file that was recovered from a 32-bits system <br>
 that organized the bytes a weird way. We're not even <br>
 sure what type of file it is. <br>
 Download it here and see what you can get out of it
 
-# Solution
+## Solution
 
 Here is a better formatted version of this writeup on [picoCTF Solutions website](https://picoctfsolutions.com/picoctf-2024-endianness-v2).
 

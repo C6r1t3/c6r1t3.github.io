@@ -12,12 +12,12 @@ ShowReadingTime = true
 ShowToc = true
 ShowCodeCopyButtons = true
 ShowBreadCrumbs = true
-description = 'Writeup CTF về An toàn thông tin.'
+description = 'Blog writeup CTF của một sinh viên An toàn thông tin tại KMA.'
 comments = true
 
 [params.homeInfoParams]
-Title = 'Hi there!'
-Content = 'I am an Information Security student at KMA, documenting my CTF writeups.'
+Title = 'Xin chào!'
+Content = 'Mình là sinh viên An toàn thông tin tại KMA, chia sẻ các bài writeup CTF và những điều học được trong quá trình thực hành.'
 
 [[params.socialIcons]]
 name = 'github'
@@ -26,10 +26,6 @@ url = 'https://github.com/C6r1t3'
 [[params.socialIcons]]
 name = 'linkedin'
 url = 'https://www.linkedin.com/in/canhsieubanh/'
-
-[[params.socialIcons]]
-name = 'facebook'
-url = 'https://www.facebook.com/fngcanh/'
 
 [[menu.main]]
 identifier = 'posts'
@@ -44,13 +40,25 @@ url = '/tags/'
 weight = 20
 
 [[menu.main]]
+identifier = 'categories'
+name = 'Categories'
+url = '/categories/'
+weight = 30
+
+[[menu.main]]
 identifier = 'search'
 name = 'Search'
 url = '/search/'
-weight = 30
+weight = 40
+
+[[menu.main]]
+identifier = 'archives'
+name = 'Archive'
+url = '/archives/'
+weight = 50
 
 [[menu.main]]
 identifier = 'about'
 name = 'About'
 url = '/about/'
-weight = 40
+weight = 60

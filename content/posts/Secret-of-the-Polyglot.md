@@ -2,11 +2,12 @@
 date = '2026-11-04T10:56:02+07:00'
 draft = false
 title = 'Secret of the Polyglot'
+summary = 'Phân tích một tệp đa định dạng để trích xuất các phần của flag từ PDF và PNG.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['CTF Writeup']
+categories = ['PicoCTF']
 +++
 
-# Description
+## Description
 
 The Network Operations Center (NOC) of your local <br>
 institution picked up a suspicious file, they're getting<br>
@@ -16,7 +17,7 @@ file. Can you extract all the information from this <br>
 strange file? <br>
 Download the suspicious file here.
 
-# Solution
+## Solution
 
 Here is a better formatted version of this writeup on [picoCTF Solutions website](https://picoctfsolutions.com/picoctf-2024-secret-of-the-polyglot).
 

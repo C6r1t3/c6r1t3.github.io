@@ -2,17 +2,18 @@
 date = '2026-11-04T10:54:21+07:00'
 draft = false
 title = 'Dear Diary'
+summary = 'Tìm các mảnh flag bị phân tán trong disk image bằng cách lần theo tên tệp.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['CTF Writeup']
+categories = ['PicoCTF']
 +++
 
-# Description
+## Description
 
 If you can find the flag on this disk image, we can close <br>
 the case for good! <br>
 Download the disk image here.
 
-# Solution
+## Solution
 
 Here is a better formatted version of this writeup on [picoCTF Solutions website](https://picoctfsolutions.com/picoctf-2024-dear-diary).
 

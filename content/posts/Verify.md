@@ -1,12 +1,13 @@
 +++
 date = '2026-11-04T10:40:55+07:00'
 draft = false
-title = 'My First Writeup'
+title = 'Verify'
+summary = 'Hướng dẫn xác minh checksum để tìm đúng tệp và giải mã thử thách Verify.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['CTF Writeup']
+categories = ['PicoCTF']
 +++
 
-# Description
+## Description
 
 People keep trying to trick my players with imitation <br>
 flags. I want to make sure they get the real thing! I'm <br>
@@ -24,7 +25,7 @@ in a shell, passwords are hidden! <br>
 * Checksum: <br>03b52eabed517324828b9e09cbbf8a7b0911f348f<br>76cf989ba6d51acede6d5d8
 * To decrypt the file once you've verified the hash, <br>run ./decrypt.sh files/<file>.
 
-# Solution
+## Solution
 
 Here is a better formatted version of this writeup on [picoCTF Solutions website](https://picoctfsolutions.com/picoctf-2024-verify).
 

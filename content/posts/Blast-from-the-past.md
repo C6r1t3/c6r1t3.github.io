@@ -2,11 +2,12 @@
 date = '2026-11-04T10:47:34+07:00'
 draft = false
 title = 'Blast From the Past'
+summary = 'Chỉnh sửa các timestamp trong metadata ảnh để vượt qua bộ kiểm tra của thử thách.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['CTF Writeup']
+categories = ['PicoCTF']
 +++
 
-# Description
+## Description
 
 The judge for these pictures is a real fan of antiques. <br>
 Can you age this photo to the specifications? <br>
@@ -25,7 +26,7 @@ Submit your modified picture here: <br>
 Check your modified picture here: <br>
 `nc -d mimas.picoctf.net 50499`
 
-# Solution
+## Solution
 
 Here is a better formatted version of this writeup on [picoCTF Solutions website](https://picoctfsolutions.com/picoctf-2024-blast-from-the-past).
 

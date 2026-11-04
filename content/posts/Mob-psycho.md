@@ -2,16 +2,17 @@
 date = '2026-11-04T10:55:06+07:00'
 draft = false
 title = 'Mob Psycho'
+summary = 'Phân tích APK Android để tìm tệp ẩn chứa dữ liệu mã hóa của thử thách.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['CTF Writeup']
+categories = ['PicoCTF']
 +++
 
-# Description
+## Description
 
 Can you handle APKs? <br>
 Download the android apk here.
 
-# Solution
+## Solution
 
 Here is a better formatted version of this writeup on [picoCTF Solutions website](https://picoctfsolutions.com/picoctf-2024-mob-psycho).
 

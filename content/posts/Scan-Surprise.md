@@ -2,11 +2,12 @@
 date = '2026-11-04T10:55:32+07:00'
 draft = false
 title = 'Scan Surprise'
+summary = 'Hướng dẫn tìm và quét mã QR trong hình ảnh để lấy flag.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['CTF Writeup']
+categories = ['PicoCTF']
 +++
 
-# Description
+## Description
 
 I've gotten bored of handing out flags as text. Wouldn't <br>
 it be cool if they were an image instead?
@@ -21,7 +22,7 @@ Using the password `6dd28e9b`. Accept the fingerprint <br>
 with yes, and ls once connected to begin. Remember, <br>
 in a shell, passwords are hidden!
 
-# Solution
+## Solution
 
 Here is a better formatted version of this writeup on [picoCTF Solutions website](https://picoctfsolutions.com/picoctf-2024-scan-surprise).
 

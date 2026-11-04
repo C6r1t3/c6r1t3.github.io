@@ -2,16 +2,17 @@
 date = '2026-11-04T10:53:48+07:00'
 draft = false
 title = 'CanYouSee'
+summary = 'Trích xuất dữ liệu Base64 được giấu trong metadata của một tệp ảnh.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['CTF Writeup']
+categories = ['PicoCTF']
 +++
 
-# Description
+## Description
 
 How about some hide and seek? <br>
 Download this file here.
 
-# Solution
+## Solution
 
 Here is a better formatted version of this writeup on [picoCTF Solutions website](https://picoctfsolutions.com/picoctf-2024-canyousee).
 
