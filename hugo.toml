@@ -4,6 +4,9 @@ title = "C6r1t3's Home"
 theme = 'PaperMod'
 enableRobotsTXT = true
 
+[markup.goldmark.renderer]
+unsafe = true
+
 [outputs]
 home = ['HTML', 'RSS', 'JSON']
 

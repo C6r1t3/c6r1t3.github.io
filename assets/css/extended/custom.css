@@ -105,7 +105,7 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     font-size: .78rem;
-    gap: .35rem .65rem;
+    gap: .65rem 1rem;
     justify-content: center;
     max-width: none;
     padding: 2rem max(1rem, calc((100% - 1000px) / 2));
@@ -290,14 +290,19 @@ a:hover {
 
 .post-single .about-social-links {
     display: flex;
-    gap: .75rem;
+    flex-wrap: wrap;
+    gap: .65rem;
     margin-top: 1.25rem;
 }
 
 .about-social-links a {
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 6px;
     color: var(--secondary);
     display: inline-flex;
-    padding: .25rem;
+    gap: .4rem;
+    padding: .4rem .65rem;
 }
 
 .about-social-links a:hover {
@@ -308,6 +313,11 @@ a:hover {
     fill: currentColor;
     height: 1.25rem;
     width: 1.25rem;
+}
+
+.about-social-links span {
+    font-size: .82rem;
+    font-weight: 600;
 }
 
 .about-social-links a:focus-visible {
@@ -344,14 +354,26 @@ a:hover {
 .tag-list {
     display: flex;
     flex-wrap: wrap;
-    gap: .5rem;
+    gap: .35rem;
 }
 
 .tag-list a {
     background: color-mix(in srgb, var(--accent) 15%, transparent);
     border: 1px solid var(--border);
     border-radius: 999px;
-    padding: .25rem .65rem;
+    font-size: .72rem;
+    line-height: 1.2;
+    padding: .2rem .48rem;
+}
+
+.tag-list a:hover {
+    background: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.sidebar-card .sidebar-empty {
+    color: var(--secondary);
+    font-size: .75rem;
+    margin-top: .65rem;
 }
 
 .post-single {
@@ -434,13 +456,19 @@ a:hover {
 }
 
 .post-content img[src*="/images/h4ck.jpg"] {
-    display: block;
-    margin: 0 auto 1.5rem;
+    background: #fff;
     border: 1px solid var(--border);
     border-radius: 50%;
+    display: block;
     height: 128px;
+    margin: 0 auto 1.5rem;
     object-fit: cover;
+    padding: 3px;
     width: 128px;
+}
+
+.about-intro {
+    white-space: nowrap;
 }
 
 .post-content img {
@@ -467,5 +495,9 @@ a:hover {
 
     .home-hero {
         padding-bottom: 3rem;
+    }
+
+    .about-intro {
+        white-space: normal;
     }
 }

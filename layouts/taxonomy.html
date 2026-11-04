@@ -4,6 +4,20 @@
 <header class="page-header">
     <h1>{{ .Title }}</h1>
 </header>
+{{ if eq .Kind "term" }}
+{{ $pages := where .Pages "Draft" false }}
+{{ if gt (len $pages) 0 }}
+    {{ range $pages }}
+    <article class="home-post-row">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <div class="post-card-meta">{{ partial "post_meta.html" . }}</div>
+        <p>{{ .Summary | plainify | htmlUnescape }}</p>
+    </article>
+    {{ end }}
+{{ else }}
+<p class="empty-state">No published posts have this tag yet.</p>
+{{ end }}
+{{ else }}
 {{ if gt (len .Data.Terms) 0 }}
 <ul class="terms-tags">
     {{ range $key, $value := .Data.Terms.Alphabetical }}
@@ -14,6 +28,7 @@
 </ul>
 {{ else }}
 <p class="empty-state">No published writeups are assigned to this taxonomy yet.</p>
+{{ end }}
 {{ end }}
 </div>
 {{ partial "site_sidebar.html" . }}

@@ -2,17 +2,15 @@
 title = 'About'
 layout = 'single'
 ShowToc = false
+hideMeta = true
 +++
 
 ## C6r1t3's here!
 
 ![C6r1t3 avatar](/images/h4ck.jpg)
 
-I am a second-year Cybersecurity student at the Academy of Cryptography Techniques.
+<p class="about-intro">I am a second-year Cybersecurity student at KMA (Academy of Cryptography Techniques).</p>
 
 Find me there:
 
-- [Discord](https://discord.com/users/1162725668853923900)
-- [GitHub](https://github.com/C6r1t3)
-- [LinkedIn](https://www.linkedin.com/in/canhsieubanh/)
-- [Email](mailto:vcp171107@gmail.com)
+{{< social-links >}}
