@@ -1,0 +1,16 @@
+{{ define "main" }}
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+</header>
+{{ if gt (len .Data.Terms) 0 }}
+<ul class="terms-tags">
+    {{ range $key, $value := .Data.Terms.Alphabetical }}
+    {{ with site.GetPage (printf "/%s/%s" $.Type $key) }}
+    <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }} <sup><strong>{{ $value.Count }}</strong></sup></a></li>
+    {{ end }}
+    {{ end }}
+</ul>
+{{ else }}
+<p class="empty-state">New writeups are being prepared.</p>
+{{ end }}
+{{ end }}

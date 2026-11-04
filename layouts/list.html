@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="site-layout">
+<div class="site-main">
+{{ if .Title }}
+<header class="page-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<div class="post-description">{{ . | markdownify }}</div>{{ end }}
+</header>
+{{ end }}
+
+{{ $pages := .RegularPages }}
+{{ if .IsHome }}{{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}{{ end }}
+{{ if gt (len $pages) 0 }}
+    {{ range $pages }}
+    <article class="post-entry">
+        <header class="entry-header"><h2>{{ .Title }}</h2></header>
+        <div class="entry-content"><p>{{ .Summary | plainify | htmlUnescape }}</p></div>
+        <footer class="entry-footer">{{ partial "post_meta.html" . }}</footer>
+        <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .RelPermalink }}"></a>
+    </article>
+    {{ end }}
+{{ else }}
+<p class="empty-state">New writeups are being prepared.</p>
+{{ end }}
+</div>
+{{ partial "site_sidebar.html" . }}
+</div>
+{{ end }}

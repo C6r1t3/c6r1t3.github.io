@@ -1,16 +1,39 @@
-<script src="https://giscus.app/client.js"
-        data-repo="C6r1t3/c6r1t3.github.io"
-        data-repo-id="R_kgDOViAZRQ"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOViAZRc4DKV6a"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="preferred_color_scheme"
-        data-lang="vi"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
+{{ if eq .Section "posts" }}
+<script>
+(() => {
+    const getTheme = () => document.documentElement.dataset.theme ||
+        (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    Object.assign(script.dataset, {
+        repo: "C6r1t3/c6r1t3.github.io",
+        repoId: "R_kgDOViAZRQ",
+        category: "Announcements",
+        categoryId: "DIC_kwDOViAZRc4DKV6a",
+        mapping: "pathname",
+        strict: "0",
+        reactionsEnabled: "1",
+        emitMetadata: "0",
+        inputPosition: "bottom",
+        theme: getTheme(),
+        lang: "en",
+        loading: "lazy"
+    });
+    document.currentScript.parentNode.appendChild(script);
+    const sendTheme = () => {
+        const iframe = document.querySelector("iframe.giscus-frame");
+        if (iframe) {
+            iframe.contentWindow.postMessage({
+                giscus: { setConfig: { theme: getTheme() } }
+            }, "https://giscus.app");
+        }
+    };
+    const observer = new MutationObserver(sendTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    window.addEventListener("load", sendTheme);
+    window.setTimeout(sendTheme, 1000);
+})();
 </script>
+{{ end }}

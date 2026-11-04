@@ -1,10 +1,10 @@
 +++
 date = '2026-11-04T10:47:34+07:00'
-draft = false
+draft = true
 title = 'Blast From the Past'
-summary = 'Chỉnh sửa các timestamp trong metadata ảnh để vượt qua bộ kiểm tra của thử thách.'
+summary = 'Modify image metadata timestamps to pass the challenge validation.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['PicoCTF']
+categories = ['Forensics']
 platforms = ['picoCTF']
 +++
 

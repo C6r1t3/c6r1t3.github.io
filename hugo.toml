@@ -1,6 +1,6 @@
 baseURL = 'https://c6r1t3.pages.dev/'
-locale = 'vi'
-title = 'C6R1T3 | CTF Writeups & Security Notes'
+locale = 'en'
+title = "C6r1t3's Home"
 theme = 'PaperMod'
 enableRobotsTXT = true
 
@@ -15,24 +15,30 @@ ShowToc = true
 ShowCodeCopyButtons = true
 ShowBreadCrumbs = true
 ShowPostNavLinks = true
-description = 'Writeup CTF và ghi chú An toàn thông tin. Investigate. Analyze. Document.'
+description = 'CTF writeups and security notes. Investigate. Analyze. Document.'
 comments = true
+
+[params.label]
+text = 'C6r1t3'
+
+[params.footer]
+text = '[GitHub](https://github.com/C6r1t3) · [RSS](/index.xml)'
 
 [params.music]
 title = '4 IN 1 - HIYA x LBI (PROD. GAZ)'
 artist = 'Gaz Official'
-cover = '/music/cover.jpg'
-link = 'https://www.youtube.com/watch?v=RUOamhI9Spc'
-link_label = 'Nghe trên YouTube'
+src = 'music/theme.mp3'
+cover = 'music/cover.jpg'
 
 [taxonomies]
 category = 'categories'
 tag = 'tags'
 platform = 'platforms'
+tool = 'tools'
 
 [params.homeInfoParams]
-Title = 'Xin chào!'
-Content = 'Mình là sinh viên An toàn thông tin tại KMA, chia sẻ các bài writeup CTF và những điều học được trong quá trình thực hành.'
+Title = 'Welcome'
+Content = 'CTF writeups and security notes focused on Digital Forensics, Steganography, Misc / OSINT, and Reverse Engineering.'
 
 [[params.socialIcons]]
 name = 'github'
@@ -42,6 +48,20 @@ url = 'https://github.com/C6r1t3'
 name = 'linkedin'
 url = 'https://www.linkedin.com/in/canhsieubanh/'
 
+[[params.socialIcons]]
+name = 'discord'
+url = 'https://discord.com/users/1162725668853923900'
+
+[[params.socialIcons]]
+name = 'email'
+url = 'mailto:vcp171107@gmail.com'
+
+[[menu.main]]
+identifier = 'home'
+name = 'Home'
+url = '/'
+weight = 1
+
 [[menu.main]]
 identifier = 'posts'
 name = 'Posts'
@@ -49,37 +69,7 @@ url = '/posts/'
 weight = 10
 
 [[menu.main]]
-identifier = 'tags'
-name = 'Tags'
-url = '/tags/'
-weight = 20
-
-[[menu.main]]
-identifier = 'categories'
-name = 'Categories'
-url = '/categories/'
-weight = 30
-
-[[menu.main]]
-identifier = 'platforms'
-name = 'Platforms'
-url = '/platforms/'
-weight = 35
-
-[[menu.main]]
-identifier = 'search'
-name = 'Search'
-url = '/search/'
-weight = 40
-
-[[menu.main]]
-identifier = 'archives'
-name = 'Archive'
-url = '/archives/'
-weight = 50
-
-[[menu.main]]
 identifier = 'about'
 name = 'About'
 url = '/about/'
-weight = 60
+weight = 20

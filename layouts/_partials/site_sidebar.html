@@ -1,0 +1,33 @@
+{{- $posts := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $posts = where $posts "Draft" false }}
+<aside class="site-sidebar">
+    <section class="sidebar-card">
+        <h2>Recent Posts</h2>
+        {{ with $posts }}
+        <ul class="sidebar-post-list">
+            {{ range first 5 (sort . "Date" "desc") }}
+            <li>
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                <time datetime="{{ .Date }}">{{ .Date | time.Format ":date_medium" }}</time>
+            </li>
+            {{ end }}
+        </ul>
+        {{ else }}<p class="sidebar-empty">No published writeups yet.</p>{{ end }}
+    </section>
+    <section class="sidebar-card">
+        <h2>Tags</h2>
+        {{ with site.Taxonomies.tags }}
+        <div class="tag-list">
+            {{ range $name, $term := . }}
+            {{ if gt (len $term.Pages) 0 }}<a href="{{ $term.Page.RelPermalink }}">{{ $term.Page.Title }}</a>{{ end }}
+            {{ end }}
+        </div>
+        {{ else }}<p class="sidebar-empty">Tags will appear with published writeups.</p>{{ end }}
+    </section>
+    {{ if eq .RelPermalink "/about/" }}
+    <section class="sidebar-card music-sidebar-card">
+        <h2>My Music</h2>
+        {{ partial "music_player.html" . }}
+    </section>
+    {{ end }}
+</aside>

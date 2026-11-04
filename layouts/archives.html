@@ -1,0 +1,21 @@
+{{ define "main" }}
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+</header>
+{{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{ if gt (len $pages) 0 }}
+    {{ range $pages.GroupByPublishDate "2006" }}
+    <div class="archive-year">
+        <h2 class="archive-year-header">{{ .Key }}</h2>
+        {{ range .Pages }}
+        <div class="archive-entry">
+            <h3 class="archive-entry-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <div class="archive-meta">{{ partial "post_meta.html" . }}</div>
+        </div>
+        {{ end }}
+    </div>
+    {{ end }}
+{{ else }}
+<p class="empty-state">New writeups are being prepared.</p>
+{{ end }}
+{{ end }}

@@ -1,0 +1,14 @@
+[
+{{- range $index, $page := where site.RegularPages "Draft" false }}
+    {{- if $index }},{{ end }}
+    {{- dict
+        "title" $page.Title
+        "summary" $page.Summary
+        "permalink" $page.Permalink
+        "categories" ($page.Params.categories | default (slice))
+        "platforms" ($page.Params.platforms | default (slice))
+        "tools" ($page.Params.tools | default (slice))
+        "tags" ($page.Params.tags | default (slice))
+    | jsonify -}}
+{{- end }}
+]

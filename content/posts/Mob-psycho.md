@@ -1,10 +1,10 @@
 +++
 date = '2026-11-04T10:55:06+07:00'
-draft = false
+draft = true
 title = 'Mob Psycho'
-summary = 'Phân tích APK Android để tìm tệp ẩn chứa dữ liệu mã hóa của thử thách.'
+summary = 'Analyze an Android APK to find a hidden file containing challenge data.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['PicoCTF']
+categories = ['Forensics']
 platforms = ['picoCTF']
 +++
 

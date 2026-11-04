@@ -1,10 +1,10 @@
 +++
 date = '2026-11-04T10:54:21+07:00'
-draft = false
+draft = true
 title = 'Dear Diary'
-summary = 'Tìm các mảnh flag bị phân tán trong disk image bằng cách lần theo tên tệp.'
+summary = 'Find scattered flag fragments in a disk image by following file names.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['PicoCTF']
+categories = ['Forensics']
 platforms = ['picoCTF']
 +++
 

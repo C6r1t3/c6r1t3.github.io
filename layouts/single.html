@@ -1,0 +1,23 @@
+{{- define "main" }}
+<div class="site-layout">
+<div class="site-main">
+<article class="post-single">
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="post-title entry-hint-parent">{{ .Title }}</h1>
+    {{ with .Description }}<div class="post-description">{{ . }}</div>{{ end }}
+    {{ if not (.Param "hideMeta") }}<div class="post-meta">{{ partial "post_meta.html" . }}</div>{{ end }}
+  </header>
+  {{ if (.Param "ShowToc") }}{{ partial "toc.html" . }}{{ end }}
+  {{ if .Content }}<div class="post-content md-content">{{ partial "anchored_headings.html" .Content }}</div>{{ end }}
+  <footer class="post-footer">
+    {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+    <ul class="post-tags">{{ range ($.GetTerms $tags) }}<li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>{{ end }}</ul>
+    {{ if (.Param "ShowPostNavLinks") }}{{ partial "post_nav_links.html" . }}{{ end }}
+  </footer>
+  {{ if (.Param "comments") }}{{ partial "comments.html" . }}{{ end }}
+</article>
+</div>
+{{ partial "site_sidebar.html" . }}
+</div>
+{{- end }}

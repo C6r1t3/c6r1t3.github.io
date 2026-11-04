@@ -1,10 +1,10 @@
 +++
 date = '2026-11-04T10:56:02+07:00'
-draft = false
+draft = true
 title = 'Secret of the Polyglot'
-summary = 'Phân tích một tệp đa định dạng để trích xuất các phần của flag từ PDF và PNG.'
+summary = 'Analyze a polyglot file to extract flag fragments from PDF and PNG data.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['PicoCTF']
+categories = ['Forensics']
 platforms = ['picoCTF']
 +++
 

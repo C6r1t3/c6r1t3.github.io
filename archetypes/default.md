@@ -5,6 +5,7 @@ title = '{{ replace .File.ContentBaseName "-" " " | title }}'
 summary = ''
 categories = []
 platforms = []
+tools = []
 tags = []
 difficulty = ''
 +++
@@ -14,6 +15,8 @@ difficulty = ''
 ## Initial Analysis
 
 ## Investigation
+
+![Example image description](/images/example.png "Optional caption")
 
 ## Solution
 

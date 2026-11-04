@@ -1,10 +1,10 @@
 +++
 date = '2026-11-04T10:40:55+07:00'
-draft = false
+draft = true
 title = 'Verify'
-summary = 'Hướng dẫn xác minh checksum để tìm đúng tệp và giải mã thử thách Verify.'
+summary = 'Verify checksums to identify the correct file and decrypt the Verify challenge.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['PicoCTF']
+categories = ['Forensics']
 platforms = ['picoCTF']
 +++
 

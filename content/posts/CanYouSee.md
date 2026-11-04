@@ -1,10 +1,10 @@
 +++
 date = '2026-11-04T10:53:48+07:00'
-draft = false
+draft = true
 title = 'CanYouSee'
-summary = 'Trích xuất dữ liệu Base64 được giấu trong metadata của một tệp ảnh.'
+summary = 'Extract Base64 data hidden in the metadata of an image file.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['PicoCTF']
+categories = ['Forensics']
 platforms = ['picoCTF']
 +++
 

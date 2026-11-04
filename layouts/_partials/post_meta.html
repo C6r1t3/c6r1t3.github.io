@@ -1,0 +1,39 @@
+{{- $meta := slice }}
+
+{{- if not .Date.IsZero -}}
+    {{- $meta = $meta | append (printf "<span title='%s'>%s</span>" (.Date | time.Format "2006-01-02T15:04:05-07:00") (.Date | time.Format (default ":date_long" site.Params.DateFormat))) }}
+{{- end }}
+
+{{- if (.Param "ShowReadingTime") -}}
+    {{- $meta = $meta | append (printf "<span>%s</span>" (i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime))) }}
+{{- end }}
+
+{{- range $index, $category := .Params.categories }}
+    {{- $meta = $meta | append (printf "<span>Category: <a href='%s'>%s</a></span>" (printf "/categories/%s/" ($category | urlize) | relURL) $category) }}
+{{- end }}
+
+{{- range $index, $platform := .Params.platforms }}
+    {{- $meta = $meta | append (printf "<span>Platform: <a href='%s'>%s</a></span>" (printf "/platforms/%s/" ($platform | urlize) | relURL) $platform) }}
+{{- end }}
+
+{{- with .Params.difficulty }}
+    {{- $meta = $meta | append (printf "<span>Difficulty: %s</span>" .) }}
+{{- end }}
+
+{{- range $index, $tool := .Params.tools }}
+    {{- $meta = $meta | append (printf "<span>Tool: <a href='%s'>%s</a></span>" (printf "/tools/%s/" ($tool | urlize) | relURL) $tool) }}
+{{- end }}
+
+{{- if (.Param "ShowWordCount") -}}
+    {{- $meta = $meta | append (printf "<span>%s</span>" (i18n "words" .WordCount | default (printf "%d words" .WordCount))) }}
+{{- end }}
+
+{{- if not (.Param "hideAuthor") -}}
+    {{- with (partial "author.html" .) }}
+        {{- $meta = $meta | append (printf "<span>%s</span>" .) }}
+    {{- end }}
+{{- end }}
+
+{{- with $meta }}
+    {{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
+{{- end -}}

@@ -1,10 +1,10 @@
 +++
 date = '2026-11-04T10:55:32+07:00'
-draft = false
+draft = true
 title = 'Scan Surprise'
-summary = 'Hướng dẫn tìm và quét mã QR trong hình ảnh để lấy flag.'
+summary = 'Locate and scan a QR code in an image to recover the flag.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['PicoCTF']
+categories = ['Forensics']
 platforms = ['picoCTF']
 +++
 

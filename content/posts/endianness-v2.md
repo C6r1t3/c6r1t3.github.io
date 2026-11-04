@@ -1,10 +1,10 @@
 +++
 date = '2026-11-04T10:56:29+07:00'
-draft = false
+draft = true
 title = 'Endianness V2'
-summary = 'Khôi phục ảnh bằng cách hoán đổi thứ tự byte theo định dạng của hệ thống 32-bit.'
+summary = 'Recover an image by swapping byte order according to a 32-bit system format.'
 tags = ['forensics', 'picoCTF'] 
-categories = ['PicoCTF']
+categories = ['Forensics']
 platforms = ['picoCTF']
 +++
 

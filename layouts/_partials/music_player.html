@@ -1,0 +1,13 @@
+{{ with site.Params.music.src }}
+<div class="music-player">
+    {{ with site.Params.music.cover }}<img class="music-player__cover" src="{{ . | relURL }}" alt="" width="64" height="64">{{ end }}
+    <div class="music-player__main">
+        <strong class="music-player__title">{{ site.Params.music.title }}</strong>
+        <span class="music-player__artist">{{ site.Params.music.artist }}</span>
+        <audio controls preload="metadata">
+            <source src="{{ . | relURL }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</div>
+{{ end }}

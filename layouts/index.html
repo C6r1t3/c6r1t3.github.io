@@ -1,59 +1,28 @@
 {{ define "main" }}
-<div class="home-shell">
-    <section class="home-hero">
-        <p class="eyebrow">CTF WRITEUPS &amp; SECURITY NOTES</p>
-        <h1>C6R1T3</h1>
-        <p class="hero-tagline">Investigate. Analyze. Document.</p>
-        <p class="hero-description">Ghi lại quá trình phân tích, giải quyết thử thách và học hỏi trong an toàn thông tin.</p>
-        <div class="hero-actions">
-            <a class="button button-primary" href="{{ "/posts/" | relURL }}">Browse Writeups</a>
-            <a class="button button-secondary" href="https://github.com/C6r1t3">GitHub</a>
-        </div>
-    </section>
-
+<div class="site-layout home-shell">
+<div class="site-main">
     {{ $posts := where site.RegularPages "Type" "in" site.Params.mainSections }}
     {{ $posts = where $posts "Draft" false }}
-    {{ with $posts }}
-    <section class="home-section">
-        <div class="section-heading">
-            <p class="eyebrow">LATEST NOTES</p>
-            <h2>Recent writeups</h2>
-        </div>
-        <div class="post-grid">
+    <section class="content-card latest-posts">
+        <h2>Latest Posts</h2>
+        {{ with $posts }}
+        <div class="post-list">
             {{ range first 6 (sort . "Date" "desc") }}
-            <article class="home-post-card">
+            <article class="home-post-row">
                 <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                {{ with .Summary }}<p>{{ . }}</p>{{ end }}
                 <div class="post-card-meta">
                     <time datetime="{{ .Date }}">{{ .Date | time.Format ":date_medium" }}</time>
-                    <span>{{ .ReadingTime }} min read</span>
+                    <span>{{ i18n "read_time" .ReadingTime | default (printf "%d min read" .ReadingTime) }}</span>
                 </div>
-                <div class="post-card-taxonomy">
-                    {{ range $index, $category := .Params.categories }}{{ if eq $index 0 }}<a href="{{ (printf "/categories/%s/" ($category | urlize)) | relURL }}">{{ $category }}</a>{{ end }}{{ end }}
-                    {{ range $index, $platform := .Params.platforms }}{{ if eq $index 0 }}<a href="{{ (printf "/platforms/%s/" ($platform | urlize)) | relURL }}">{{ $platform }}</a>{{ end }}{{ end }}
-                </div>
+                {{ with .Summary }}<p>{{ . }}</p>{{ end }}
             </article>
             {{ end }}
         </div>
+        {{ else }}
+        <p class="empty-state">New writeups are being prepared.</p>
+        {{ end }}
     </section>
-    {{ end }}
-
-    {{ with site.Taxonomies.categories }}
-    <section class="home-section taxonomy-section">
-        <div class="section-heading">
-            <p class="eyebrow">TOPICS</p>
-            <h2>Categories</h2>
-        </div>
-        <div class="taxonomy-list">
-            {{ range $name, $term := . }}
-                {{ if gt (len $term.Pages) 0 }}
-                <a class="taxonomy-chip" href="{{ $term.Page.RelPermalink }}">
-                    <span>{{ $term.Page.Title }}</span><strong>{{ len $term.Pages }}</strong>
-                </a>
-                {{ end }}
-            {{ end }}
-        </div>
-    </section>
-    {{ end }}
 </div>
-{{ end }}
+    {{ partial "site_sidebar.html" . }}
+    </div>
+    {{ end }}
