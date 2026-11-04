@@ -5,6 +5,7 @@ title = 'Blast From the Past'
 tags = ['forensics', 'picoCTF'] 
 categories = ['CTF Writeup']
 +++
+
 # Description
 
 The judge for these pictures is a real fan of antiques. <br>
@@ -60,4 +61,3 @@ To get the flag write these commands again:
 `nc -w 2 mimas.picoctf.net 57925 < original_modified.jpg`, then `nc -d mimas.picoctf.net 50499`
 
 Flag: `picoCTF{71m3_7r4v311ng_p1c7ur3_12e0...}`
-

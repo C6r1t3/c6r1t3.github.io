@@ -55,4 +55,3 @@ Another method of doing it is trying to decrypt every file to get the flag:
 This iterates through every file in files/ directory and decrypts. If it was done successfully then it would be put into flag.txt file. With `cat flag.txt` the flag could be seen.
 
 Flag: `picoCTF{trust_but_verify_0...}`
-

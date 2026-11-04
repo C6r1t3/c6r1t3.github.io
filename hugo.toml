@@ -2,3 +2,47 @@ baseURL = 'https://example.org/'
 locale = 'vi'
 title = "C6r1t3"
 theme = "PaperMod"
+
+[outputs]
+home = ['HTML', 'RSS', 'JSON']
+
+[params]
+defaultTheme = 'auto'
+ShowReadingTime = true
+ShowToc = true
+ShowCodeCopyButtons = true
+ShowBreadCrumbs = true
+description = 'Writeup CTF về An toàn thông tin.'
+comments = true
+
+[params.homeInfoParams]
+Title = 'Xin chào!'
+Content = 'Mình là sinh viên An toàn thông tin và viết các writeup CTF.'
+
+[[params.socialIcons]]
+name = 'github'
+url = 'https://github.com/C6r1t3'
+
+[[menu.main]]
+identifier = 'posts'
+name = 'Posts'
+url = '/posts/'
+weight = 10
+
+[[menu.main]]
+identifier = 'tags'
+name = 'Tags'
+url = '/tags/'
+weight = 20
+
+[[menu.main]]
+identifier = 'search'
+name = 'Search'
+url = '/search/'
+weight = 30
+
+[[menu.main]]
+identifier = 'about'
+name = 'About'
+url = '/about/'
+weight = 40

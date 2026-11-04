@@ -1,0 +1,11 @@
+<div class="music-player">
+    <audio controls preload="none" aria-label="Nhạc nền">
+        <source src="{{ "music/4 IN 1 - HIYA x LBI (PROD. GAZ) - JERK DRILL TYPE BEAT.mp3" | relURL }}" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ phát âm thanh.
+    </audio>
+</div>
+<script>
+    document.querySelectorAll(".music-player audio").forEach((player) => {
+        player.volume = 0.3;
+    });
+</script>
