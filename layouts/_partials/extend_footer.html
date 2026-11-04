@@ -1,125 +1,41 @@
-<div class="music-player" id="music-player">
-    <div class="music-player__collapsed" hidden>
-        <button class="music-player__toggle" type="button" aria-expanded="true" aria-controls="music-player-panel" aria-label="Mở trình phát nhạc">♫</button>
-    </div>
-    <div class="music-player__panel" id="music-player-panel">
-        {{ with site.Params.music.cover }}<img class="music-player__cover" src="{{ . | relURL }}" alt="" width="56" height="56">{{ else }}<span class="music-player__cover music-player__cover--placeholder" aria-label="Không có ảnh bìa">♫</span>{{ end }}
-        <div class="music-player__details">
-            <strong class="music-player__title">{{ site.Params.music.title }}</strong>
-            <a class="music-player__artist" href="{{ site.Params.music.credit_url }}" target="_blank" rel="noopener noreferrer">{{ site.Params.music.artist }} <span aria-hidden="true">↗</span></a>
-            <label class="music-player__progress-label" for="music-progress">Tiến trình</label>
-            <input id="music-progress" class="music-player__progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Tiến trình phát nhạc">
+{{ with site.Params.music.link }}
+<aside class="music-card" id="music-card">
+    <div class="music-card__panel" id="music-card-panel">
+        {{ with site.Params.music.cover }}
+        <img class="music-card__cover" src="{{ . | relURL }}" alt="" width="56" height="56">
+        {{ else }}
+        <span class="music-card__cover music-card__cover--placeholder" aria-label="Không có ảnh bìa">♫</span>
+        {{ end }}
+        <div class="music-card__details">
+            <span class="music-card__label">Đang nghe</span>
+            <strong class="music-card__title">{{ site.Params.music.title }}</strong>
+            <span class="music-card__artist">{{ site.Params.music.artist }}</span>
         </div>
-        <div class="music-player__actions">
-            <button class="music-player__play" type="button" aria-label="Phát nhạc">▶</button>
-            <button class="music-player__collapse" type="button" aria-expanded="true" aria-controls="music-player-panel" aria-label="Thu gọn trình phát nhạc">−</button>
-        </div>
-        <label class="music-player__volume-label" for="music-volume">Âm lượng</label>
-        <input id="music-volume" class="music-player__volume" type="range" min="0" max="1" value="0.3" step="0.01" aria-label="Âm lượng">
+        <a class="music-card__link" href="{{ . }}" target="_blank" rel="noopener noreferrer">
+            {{ site.Params.music.link_label | default "Nghe trên YouTube" }} <span aria-hidden="true">↗</span>
+        </a>
+        <button class="music-card__toggle" type="button" aria-expanded="true" aria-controls="music-card-panel" aria-label="Thu gọn thẻ nhạc">−</button>
     </div>
-    <audio class="music-player__audio" preload="metadata" aria-label="Nhạc nền">
-            <source src="{{ site.Params.music.src | relURL }}" type="audio/mpeg">
-            Trình duyệt của bạn không hỗ trợ phát âm thanh.
-        </audio>
-</div>
+</aside>
 <script>
 (() => {
-    if (window.__c6r1t3MusicReady) {
-        return;
-    }
-    window.__c6r1t3MusicReady = true;
-
-    const stateKey = "c6r1t3-music-state";
-    const player = document.querySelector("#music-player");
-    if (!player) {
+    const card = document.querySelector("#music-card");
+    const panel = document.querySelector("#music-card-panel");
+    const toggle = card && card.querySelector(".music-card__toggle");
+    if (!card || !panel || !toggle) {
         return;
     }
 
-    const audio = player.querySelector(".music-player__audio");
-    const playButton = player.querySelector(".music-player__play");
-    const progress = player.querySelector(".music-player__progress");
-    const volume = player.querySelector(".music-player__volume");
-    const panel = player.querySelector(".music-player__panel");
-    const collapsed = player.querySelector(".music-player__collapsed");
-
-    const saveState = () => {
-        sessionStorage.setItem(stateKey, JSON.stringify({
-            currentTime: audio.currentTime,
-            paused: audio.paused,
-            volume: audio.volume
-        }));
+    const setCollapsed = (collapsed) => {
+        panel.hidden = collapsed;
+        toggle.setAttribute("aria-expanded", String(!collapsed));
+        toggle.setAttribute("aria-label", collapsed ? "Mở thẻ nhạc" : "Thu gọn thẻ nhạc");
     };
 
-    const updatePlayButton = () => {
-        const isPlaying = !audio.paused;
-        playButton.textContent = isPlaying ? "❚❚" : "▶";
-        playButton.setAttribute("aria-label", isPlaying ? "Tạm dừng nhạc" : "Phát nhạc");
-    };
-
-    const updateProgress = () => {
-        progress.value = audio.duration ? String((audio.currentTime / audio.duration) * 100) : "0";
-    };
-
-    playButton.addEventListener("click", () => {
-        if (audio.paused) {
-            audio.play().catch(() => {
-                updatePlayButton();
-            });
-        } else {
-            audio.pause();
-        }
+    setCollapsed(window.matchMedia("(max-width: 480px)").matches);
+    toggle.addEventListener("click", () => {
+        setCollapsed(!panel.hidden);
     });
-    progress.addEventListener("input", () => {
-        if (audio.duration) {
-            audio.currentTime = (Number(progress.value) / 100) * audio.duration;
-        }
-    });
-    volume.addEventListener("input", () => {
-        audio.volume = Number(volume.value);
-        saveState();
-    });
-    audio.addEventListener("play", updatePlayButton);
-    audio.addEventListener("pause", () => {
-        updatePlayButton();
-        saveState();
-    });
-    audio.addEventListener("timeupdate", updateProgress);
-    audio.addEventListener("loadedmetadata", updateProgress);
-    audio.addEventListener("volumechange", () => {
-        volume.value = String(audio.volume);
-    });
-    window.addEventListener("beforeunload", saveState);
-    window.addEventListener("pagehide", saveState);
-
-    player.querySelector(".music-player__collapse").addEventListener("click", () => {
-        panel.hidden = true;
-        collapsed.hidden = false;
-        player.querySelector(".music-player__toggle").setAttribute("aria-expanded", "false");
-    });
-    player.querySelector(".music-player__toggle").addEventListener("click", () => {
-        panel.hidden = false;
-        collapsed.hidden = true;
-        player.querySelector(".music-player__toggle").setAttribute("aria-expanded", "true");
-    });
-
-    const savedState = sessionStorage.getItem(stateKey);
-    if (savedState) {
-        try {
-            const state = JSON.parse(savedState);
-            audio.volume = Number.isFinite(state.volume) ? state.volume : 0.3;
-            audio.addEventListener("loadedmetadata", () => {
-                if (Number.isFinite(state.currentTime)) {
-                    audio.currentTime = Math.min(state.currentTime, audio.duration);
-                }
-                audio.pause();
-            }, { once: true });
-        } catch {
-            sessionStorage.removeItem(stateKey);
-        }
-    } else {
-        audio.volume = 0.3;
-    }
-    updatePlayButton();
-
 })();
 </script>
+{{ end }}

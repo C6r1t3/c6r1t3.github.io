@@ -19,11 +19,11 @@ description = 'Writeup CTF và ghi chú An toàn thông tin. Investigate. Analyz
 comments = true
 
 [params.music]
-title = 'Theme'
-artist = 'C6R1T3'
-src = 'music/theme.mp3'
-cover = 'music/cover.jpg'
-credit_url = 'https://github.com/C6r1t3/c6r1t3.github.io/tree/main/static/music'
+title = '4 IN 1 - HIYA x LBI (PROD. GAZ)'
+artist = 'Gaz Official'
+cover = '/music/cover.jpg'
+link = 'https://www.youtube.com/watch?v=RUOamhI9Spc'
+link_label = 'Nghe trên YouTube'
 
 [taxonomies]
 category = 'categories'
