@@ -22,7 +22,7 @@ comments = true
 text = 'C6r1t3'
 
 [params.footer]
-text = '[GitHub](https://github.com/C6r1t3) · [RSS](/index.xml)'
+text = ''
 
 [params.music]
 title = '4 IN 1 - HIYA x LBI (PROD. GAZ)'
