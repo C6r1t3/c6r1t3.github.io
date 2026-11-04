@@ -5,6 +5,7 @@ title = 'Blast From the Past'
 summary = 'Chỉnh sửa các timestamp trong metadata ảnh để vượt qua bộ kiểm tra của thử thách.'
 tags = ['forensics', 'picoCTF'] 
 categories = ['PicoCTF']
+platforms = ['picoCTF']
 +++
 
 ## Description

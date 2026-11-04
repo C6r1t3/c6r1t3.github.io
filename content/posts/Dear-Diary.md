@@ -5,6 +5,7 @@ title = 'Dear Diary'
 summary = 'Tìm các mảnh flag bị phân tán trong disk image bằng cách lần theo tên tệp.'
 tags = ['forensics', 'picoCTF'] 
 categories = ['PicoCTF']
+platforms = ['picoCTF']
 +++
 
 ## Description

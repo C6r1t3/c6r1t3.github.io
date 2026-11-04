@@ -1,0 +1,59 @@
+{{ define "main" }}
+<div class="home-shell">
+    <section class="home-hero">
+        <p class="eyebrow">CTF WRITEUPS &amp; SECURITY NOTES</p>
+        <h1>C6R1T3</h1>
+        <p class="hero-tagline">Investigate. Analyze. Document.</p>
+        <p class="hero-description">Ghi lại quá trình phân tích, giải quyết thử thách và học hỏi trong an toàn thông tin.</p>
+        <div class="hero-actions">
+            <a class="button button-primary" href="{{ "/posts/" | relURL }}">Browse Writeups</a>
+            <a class="button button-secondary" href="https://github.com/C6r1t3">GitHub</a>
+        </div>
+    </section>
+
+    {{ $posts := where site.RegularPages "Type" "in" site.Params.mainSections }}
+    {{ $posts = where $posts "Draft" false }}
+    {{ with $posts }}
+    <section class="home-section">
+        <div class="section-heading">
+            <p class="eyebrow">LATEST NOTES</p>
+            <h2>Recent writeups</h2>
+        </div>
+        <div class="post-grid">
+            {{ range first 6 (sort . "Date" "desc") }}
+            <article class="home-post-card">
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                {{ with .Summary }}<p>{{ . }}</p>{{ end }}
+                <div class="post-card-meta">
+                    <time datetime="{{ .Date }}">{{ .Date | time.Format ":date_medium" }}</time>
+                    <span>{{ .ReadingTime }} min read</span>
+                </div>
+                <div class="post-card-taxonomy">
+                    {{ range $index, $category := .Params.categories }}{{ if eq $index 0 }}<a href="{{ (printf "/categories/%s/" ($category | urlize)) | relURL }}">{{ $category }}</a>{{ end }}{{ end }}
+                    {{ range $index, $platform := .Params.platforms }}{{ if eq $index 0 }}<a href="{{ (printf "/platforms/%s/" ($platform | urlize)) | relURL }}">{{ $platform }}</a>{{ end }}{{ end }}
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+    {{ with site.Taxonomies.categories }}
+    <section class="home-section taxonomy-section">
+        <div class="section-heading">
+            <p class="eyebrow">TOPICS</p>
+            <h2>Categories</h2>
+        </div>
+        <div class="taxonomy-list">
+            {{ range $name, $term := . }}
+                {{ if gt (len $term.Pages) 0 }}
+                <a class="taxonomy-chip" href="{{ $term.Page.RelPermalink }}">
+                    <span>{{ $term.Page.Title }}</span><strong>{{ len $term.Pages }}</strong>
+                </a>
+                {{ end }}
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+</div>
+{{ end }}

@@ -5,6 +5,7 @@ title = 'Verify'
 summary = 'Hướng dẫn xác minh checksum để tìm đúng tệp và giải mã thử thách Verify.'
 tags = ['forensics', 'picoCTF'] 
 categories = ['PicoCTF']
+platforms = ['picoCTF']
 +++
 
 ## Description

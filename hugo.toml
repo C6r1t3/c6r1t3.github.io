@@ -1,19 +1,34 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://c6r1t3.pages.dev/'
 locale = 'vi'
-title = "C6r1t3"
-theme = "PaperMod"
+title = 'C6R1T3 | CTF Writeups & Security Notes'
+theme = 'PaperMod'
+enableRobotsTXT = true
 
 [outputs]
 home = ['HTML', 'RSS', 'JSON']
 
 [params]
+author = 'C6r1t3'
 defaultTheme = 'auto'
 ShowReadingTime = true
 ShowToc = true
 ShowCodeCopyButtons = true
 ShowBreadCrumbs = true
-description = 'Blog writeup CTF của một sinh viên An toàn thông tin tại KMA.'
+ShowPostNavLinks = true
+description = 'Writeup CTF và ghi chú An toàn thông tin. Investigate. Analyze. Document.'
 comments = true
+
+[params.music]
+title = 'Theme'
+artist = 'C6R1T3'
+src = 'music/theme.mp3'
+cover = 'music/cover.jpg'
+credit_url = 'https://github.com/C6r1t3/c6r1t3.github.io/tree/main/static/music'
+
+[taxonomies]
+category = 'categories'
+tag = 'tags'
+platform = 'platforms'
 
 [params.homeInfoParams]
 Title = 'Xin chào!'
@@ -44,6 +59,12 @@ identifier = 'categories'
 name = 'Categories'
 url = '/categories/'
 weight = 30
+
+[[menu.main]]
+identifier = 'platforms'
+name = 'Platforms'
+url = '/platforms/'
+weight = 35
 
 [[menu.main]]
 identifier = 'search'

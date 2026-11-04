@@ -24,3 +24,10 @@
 
 \- Không commit file lớn hơn 5 MB, và không commit khóa hay mật khẩu.
 
+## Dự án
+- Brand C6R1T3, tagline "Investigate. Analyze. Document.". Trọng tâm Digital Forensics, phụ Reverse Engineering.
+- Hosting: Cloudflare Pages, https://c6r1t3.pages.dev/ (lệnh build: hugo, output: public, HUGO_VERSION=0.169.0, nhánh production: main). Không đổi cấu hình hosting và không tạo workflow GitHub Actions để deploy (đã bỏ workflow GitHub Pages cũ).
+- Bình luận Giscus đã chạy (layouts/_partials/comments.html + comments = true): giữ nguyên.
+- Thanh nhạc: tôi muốn giữ. Nhạc ở static/music/, không tự động phát, không gỡ bỏ.
+- Không bịa nội dung, flag, ảnh, số liệu, thông tin cá nhân hay chứng chỉ.
+- Chỉ commit hoặc push khi tôi yêu cầu rõ. Mặc định: sửa, chạy hugo, báo cáo.

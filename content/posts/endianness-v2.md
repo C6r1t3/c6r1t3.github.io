@@ -5,6 +5,7 @@ title = 'Endianness V2'
 summary = 'Khôi phục ảnh bằng cách hoán đổi thứ tự byte theo định dạng của hệ thống 32-bit.'
 tags = ['forensics', 'picoCTF'] 
 categories = ['PicoCTF']
+platforms = ['picoCTF']
 +++
 
 ## Description

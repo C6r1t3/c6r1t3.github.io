@@ -5,6 +5,7 @@ title = 'Mob Psycho'
 summary = 'Phân tích APK Android để tìm tệp ẩn chứa dữ liệu mã hóa của thử thách.'
 tags = ['forensics', 'picoCTF'] 
 categories = ['PicoCTF']
+platforms = ['picoCTF']
 +++
 
 ## Description

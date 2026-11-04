@@ -5,6 +5,7 @@ title = 'Scan Surprise'
 summary = 'Hướng dẫn tìm và quét mã QR trong hình ảnh để lấy flag.'
 tags = ['forensics', 'picoCTF'] 
 categories = ['PicoCTF']
+platforms = ['picoCTF']
 +++
 
 ## Description

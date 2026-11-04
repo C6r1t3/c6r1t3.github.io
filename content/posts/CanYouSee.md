@@ -5,6 +5,7 @@ title = 'CanYouSee'
 summary = 'Trích xuất dữ liệu Base64 được giấu trong metadata của một tệp ảnh.'
 tags = ['forensics', 'picoCTF'] 
 categories = ['PicoCTF']
+platforms = ['picoCTF']
 +++
 
 ## Description

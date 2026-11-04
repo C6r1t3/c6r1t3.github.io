@@ -5,6 +5,7 @@ title = 'Secret of the Polyglot'
 summary = 'Phân tích một tệp đa định dạng để trích xuất các phần của flag từ PDF và PNG.'
 tags = ['forensics', 'picoCTF'] 
 categories = ['PicoCTF']
+platforms = ['picoCTF']
 +++
 
 ## Description

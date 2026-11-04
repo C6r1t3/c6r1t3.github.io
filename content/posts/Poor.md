@@ -1,7 +1,9 @@
 +++
 date = '2026-11-04T14:30:44+07:00'
 draft = false
-title = 'Poor'
+title = 'Poof'
+summary = 'Phân tích lưu lượng mạng và mã độc để giải mã payload bằng AES rồi tìm flag.'
+categories = ['CTF Writeup']
 +++
 
 ## Challenge
