@@ -26,6 +26,10 @@
                 (dict "name" "OSINT" "slug" "osint")
                 (dict "name" "Web" "slug" "web")
                 (dict "name" "Pwn" "slug" "pwn")
+                (dict "name" "Easy" "slug" "easy")
+                (dict "name" "Medium" "slug" "medium")
+                (dict "name" "Hard" "slug" "hard")
+                (dict "name" "picoCTF 2026" "slug" "picoctf-2026")
             }}
             {{ range $tags }}
             <a href="{{ printf "/tags/%s/" .slug | relURL }}">{{ .name }}</a>
