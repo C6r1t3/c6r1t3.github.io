@@ -9,38 +9,54 @@ tags = ['For', 'Easy', 'picoCTF 2026']
 difficulty = 'Easy'
 +++
 
-## Challenge Overview
+## Challenge
 
-This challenge provides a file containing what appears to be nothing more than a long sequence of `1`s and `0`s. The objective is to determine whether the binary data contains anything meaningful.
+**Name:** Binary Digits
+
+**Category:** Forensics
+
+**Difficulty:** Easy
+
+This file doesn't look like much... just a bunch of `1`s and `0`s. But maybe it's not just random noise. Can you recover anything meaningful from this?
 
 **Challenge file:** [digits.bin](https://challenge-files.cylabacademy.net/library/819e05da202722f7847eab5c0efdedc194be8a2bc19e6b436d057c8514ae70bc/digits.bin)
 
+![Binary Digits challenge page](/images/writeups/binary-digits/challenge.png)
+
 ## Initial Analysis
 
-The file does not present an obvious file signature or readable text. However, the data is composed entirely of binary digits, which suggests that it may represent bytes encoded as text rather than random noise.
+After downloading the challenge file, the content appears to be a long sequence of `1`s and `0`s. It does not look like ordinary text, but the pattern strongly suggests that the digits may be binary data represented as text.
 
-To decode it without modifying the original file, I used [CyberChef](https://gchq.github.io/CyberChef/), a browser-based tool for data analysis and transformation.
+Rather than manually process the file, I used [CyberChef](https://gchq.github.io/CyberChef/) to decode the binary stream and inspect the resulting bytes.
 
 ## Investigation
 
-First, download `digits.bin` from the challenge link.
+### 1. Download the challenge file
 
-Next, open [CyberChef](https://gchq.github.io/CyberChef/) and follow these steps:
+I downloaded `digits.bin` from the [challenge file link](https://challenge-files.cylabacademy.net/library/819e05da202722f7847eab5c0efdedc194be8a2bc19e6b436d057c8514ae70bc/digits.bin).
+
+![Downloading digits.bin](/images/writeups/binary-digits/download.png)
+
+### 2. Decode the binary data with CyberChef
+
+I opened [CyberChef](https://gchq.github.io/CyberChef/) and configured the recipe as follows:
 
 1. Drag `digits.bin` into the **Input** panel.
 2. Search for the **From Binary** operation.
 3. Drag **From Binary** into the **Recipe** panel.
 4. Set **Byte length** to `8`.
-5. The operation converts the binary digit stream into byte data.
-6. Add the **Render Image** operation to the recipe.
+5. Add **Render Image** after **From Binary**.
+6. Leave **Input format** set to `Raw`.
 
-The decoded bytes render as an image. The image contains the flag rather than ordinary file content, confirming that the original sequence was a visual payload encoded as binary.
+The `From Binary` operation converts every group of eight binary digits into one byte. The `Render Image` operation then displays those bytes as an image.
+
+![CyberChef recipe and rendered output](/images/writeups/binary-digits/cyberchef.png)
 
 ## Solution
 
-The important detail is to decode the input in groups of eight bits. Using a byte length other than `8` produces incorrect output, while the correct setting reveals valid byte data that can then be rendered as an image.
+The key is recognizing that the file contains binary digits and processing them in 8-bit groups. After the conversion, the output is valid image data. Rendering it reveals the flag embedded in the image.
 
-The complete CyberChef recipe is:
+The final CyberChef recipe is:
 
 ```text
 From Binary (Byte length: 8)
