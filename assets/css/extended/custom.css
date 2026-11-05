@@ -180,6 +180,47 @@ h3 {
     display: none;
 }
 
+@media (min-width: 761px) {
+    .logo {
+        margin-right: auto;
+    }
+
+    .menu,
+    .mobile-menu-extra {
+        display: contents;
+    }
+
+    .menu li,
+    .mobile-menu-extra li {
+        display: contents;
+        list-style: none;
+    }
+
+    .menu li:nth-child(1) a {
+        order: 1;
+    }
+
+    .menu li:nth-child(2) a {
+        order: 2;
+    }
+
+    .menu li:nth-child(3) a {
+        order: 5;
+    }
+
+    .mobile-menu-extra li:nth-child(1) a {
+        order: 3;
+    }
+
+    .mobile-menu-extra li:nth-child(2) a {
+        order: 4;
+    }
+
+    .mobile-menu-extra li:nth-child(3) a {
+        order: 6;
+    }
+}
+
 .theme-toggle {
     border: 1px solid var(--border);
     border-radius: 6px;
@@ -577,6 +618,7 @@ a:hover {
         flex-shrink: 0;
         gap: .45rem;
         line-height: 1.4;
+        margin-right: 0;
     }
 
     .logo a {

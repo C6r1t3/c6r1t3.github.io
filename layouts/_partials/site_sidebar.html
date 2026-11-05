@@ -19,13 +19,9 @@
         <div class="tag-list">
             {{ $tags := slice
                 (dict "name" "For" "slug" "for")
-                (dict "name" "Stego" "slug" "stego")
                 (dict "name" "Rev" "slug" "rev")
-                (dict "name" "Crypto" "slug" "crypto")
                 (dict "name" "Misc" "slug" "misc")
                 (dict "name" "OSINT" "slug" "osint")
-                (dict "name" "Web" "slug" "web")
-                (dict "name" "Pwn" "slug" "pwn")
                 (dict "name" "Easy" "slug" "easy")
                 (dict "name" "Medium" "slug" "medium")
                 (dict "name" "Hard" "slug" "hard")
@@ -35,7 +31,6 @@
             <a href="{{ printf "/tags/%s/" .slug | relURL }}">{{ .name }}</a>
             {{ end }}
         </div>
-        <p class="sidebar-empty">No posts are tagged yet.</p>
     </section>
     {{ if eq .RelPermalink "/about/" }}
     <section class="sidebar-card music-sidebar-card">
