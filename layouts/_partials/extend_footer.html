@@ -1,5 +1,20 @@
 <script>
     (() => {
+        const mobileQuery = window.matchMedia("(max-width: 760px)");
+        const colorQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+        const applySystemTheme = () => {
+            if (mobileQuery.matches) {
+                document.documentElement.dataset.theme = colorQuery.matches ? "dark" : "light";
+            }
+        };
+
+        applySystemTheme();
+        mobileQuery.addEventListener("change", applySystemTheme);
+        colorQuery.addEventListener("change", applySystemTheme);
+    })();
+
+    (() => {
         const menu = document.querySelector("#menu");
         if (!menu) {
             return;
