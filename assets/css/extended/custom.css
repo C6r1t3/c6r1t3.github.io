@@ -380,7 +380,7 @@ a:hover {
     background: var(--accent);
     border: 1px solid var(--accent);
     border-radius: 5px;
-    color: #10141b;
+    color: #ffffff;
     cursor: pointer;
     flex: 0 0 auto;
     font-weight: 700;

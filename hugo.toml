@@ -4,6 +4,10 @@ title = "C6r1t3's Home"
 theme = 'PaperMod'
 enableRobotsTXT = true
 
+[minify]
+disableCSS = false
+minifyOutput = true
+
 [markup.goldmark.renderer]
 unsafe = true
 
