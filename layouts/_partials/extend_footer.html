@@ -12,23 +12,30 @@
             return;
         }
 
+        const dropdown = document.createElement("ul");
+        dropdown.className = "mobile-menu-extra";
+        dropdown.id = "mobile-menu-extra";
+        dropdown.setAttribute("aria-label", "More navigation");
+        hiddenItems.forEach((item) => dropdown.append(item));
+        menu.parentElement.append(dropdown);
+
         const toggle = document.createElement("button");
         toggle.className = "mobile-menu-toggle";
         toggle.type = "button";
         toggle.setAttribute("aria-expanded", "false");
-        toggle.setAttribute("aria-controls", "menu");
+        toggle.setAttribute("aria-controls", "mobile-menu-extra");
         toggle.setAttribute("aria-label", "Open more navigation");
         toggle.innerHTML = "<span></span><span></span><span></span>";
         menu.parentElement.append(toggle);
 
         const setExpanded = (expanded) => {
-            menu.classList.toggle("mobile-menu-expanded", expanded);
+            dropdown.classList.toggle("mobile-menu-expanded", expanded);
             toggle.setAttribute("aria-expanded", String(expanded));
             toggle.setAttribute("aria-label", expanded ? "Close more navigation" : "Open more navigation");
         };
 
         toggle.addEventListener("click", () => {
-            setExpanded(!menu.classList.contains("mobile-menu-expanded"));
+            setExpanded(!dropdown.classList.contains("mobile-menu-expanded"));
         });
     })();
 </script>
