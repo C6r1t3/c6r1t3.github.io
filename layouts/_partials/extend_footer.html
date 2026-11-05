@@ -15,6 +15,100 @@
     })();
 
     (() => {
+        const searchLinks = document.querySelectorAll("a[href$='/search/']");
+        if (!searchLinks.length || document.querySelector("#searchInput")) {
+            return;
+        }
+
+        const panel = document.createElement("section");
+        panel.className = "header-search-panel";
+        panel.setAttribute("aria-label", "Search posts");
+        panel.hidden = true;
+        panel.innerHTML = `
+            <form class="header-search-form" role="search">
+                <label for="header-search-input">Search posts</label>
+                <input id="header-search-input" type="search" autocomplete="off"
+                    placeholder="Search by title, tag, or technique" maxlength="64">
+            </form>
+            <ul class="header-search-results" aria-label="Search suggestions"></ul>
+        `;
+        document.querySelector(".header")?.append(panel);
+
+        const input = panel.querySelector("#header-search-input");
+        const results = panel.querySelector(".header-search-results");
+        let posts = [];
+        let searchTimer;
+
+        const renderResults = (query) => {
+            const normalizedQuery = query.trim().toLowerCase();
+            results.replaceChildren();
+            if (!normalizedQuery) {
+                return;
+            }
+
+            const matches = posts
+                .filter((post) => {
+                    const haystack = [
+                        post.title,
+                        post.permalink,
+                        post.summary,
+                        post.content,
+                    ].join(" ").toLowerCase();
+                    return haystack.includes(normalizedQuery);
+                })
+                .slice(0, 8);
+
+            matches.forEach((post) => {
+                const item = document.createElement("li");
+                const link = document.createElement("a");
+                link.href = post.permalink;
+                link.textContent = post.title;
+                item.append(link);
+                results.append(item);
+            });
+        };
+
+        const openPanel = (event) => {
+            event.preventDefault();
+            const mobileToggle = document.querySelector(".mobile-menu-toggle[aria-expanded='true']");
+            mobileToggle?.click();
+            panel.hidden = false;
+            input.focus();
+        };
+
+        searchLinks.forEach((link) => link.addEventListener("click", openPanel));
+        input.addEventListener("input", () => {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(() => renderResults(input.value), 120);
+        });
+
+        panel.querySelector("form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            renderResults(input.value);
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && !panel.hidden) {
+                panel.hidden = true;
+                input.value = "";
+                results.replaceChildren();
+            }
+        });
+
+        fetch("/index.json")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`Search index load failed: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                posts = Array.isArray(data) ? data : [];
+            })
+            .catch((error) => console.error(error));
+    })();
+
+    (() => {
         const menu = document.querySelector("#menu");
         if (!menu) {
             return;
