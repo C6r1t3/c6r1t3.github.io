@@ -1,0 +1,34 @@
+<script>
+    (() => {
+        const menu = document.querySelector("#menu");
+        if (!menu) {
+            return;
+        }
+
+        const hiddenItems = [...menu.querySelectorAll("a[href$='/categories/'], a[href$='/archives/'], a[href$='/search/']")]
+            .map((link) => link.closest("li"))
+            .filter(Boolean);
+        if (!hiddenItems.length) {
+            return;
+        }
+
+        const toggle = document.createElement("button");
+        toggle.className = "mobile-menu-toggle";
+        toggle.type = "button";
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-controls", "menu");
+        toggle.setAttribute("aria-label", "Open more navigation");
+        toggle.innerHTML = "<span></span><span></span><span></span>";
+        menu.parentElement.append(toggle);
+
+        const setExpanded = (expanded) => {
+            menu.classList.toggle("mobile-menu-expanded", expanded);
+            toggle.setAttribute("aria-expanded", String(expanded));
+            toggle.setAttribute("aria-label", expanded ? "Close more navigation" : "Open more navigation");
+        };
+
+        toggle.addEventListener("click", () => {
+            setExpanded(!menu.classList.contains("mobile-menu-expanded"));
+        });
+    })();
+</script>

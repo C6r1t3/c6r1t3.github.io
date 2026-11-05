@@ -18,9 +18,10 @@
 <p class="empty-state">No published posts have this tag yet.</p>
 {{ end }}
 {{ else }}
-{{ if gt (len .Data.Terms) 0 }}
+{{ $terms := .Data.Terms }}
+{{ if gt (len $terms) 0 }}
 <ul class="terms-tags">
-    {{ range $key, $value := .Data.Terms.Alphabetical }}
+    {{ range $key, $value := $terms }}
     {{ with site.GetPage (printf "/%s/%s" $.Type $key) }}
     <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }} <sup><strong>{{ $value.Count }}</strong></sup></a></li>
     {{ end }}
