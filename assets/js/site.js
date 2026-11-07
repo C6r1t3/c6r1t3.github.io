@@ -1,0 +1,146 @@
+(() => {
+    const colorQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const applySystemTheme = () => {
+        if (!localStorage.getItem("pref-theme")) {
+            document.documentElement.dataset.theme = colorQuery.matches ? "dark" : "light";
+        }
+    };
+
+    applySystemTheme();
+    colorQuery.addEventListener("change", applySystemTheme);
+})();
+
+(() => {
+    const searchLinks = document.querySelectorAll("a[href$='/search/']");
+    if (!searchLinks.length || document.querySelector("#searchInput")) {
+        return;
+    }
+
+    const panel = document.createElement("section");
+    panel.className = "header-search-panel";
+    panel.setAttribute("aria-label", "Search posts");
+    panel.hidden = true;
+    panel.innerHTML = `
+        <form class="header-search-form" role="search">
+            <label for="header-search-input">Search posts</label>
+            <input id="header-search-input" type="search" autocomplete="off"
+                placeholder="Search by title, tag, or technique" maxlength="64">
+        </form>
+        <ul class="header-search-results" aria-label="Search suggestions"></ul>
+    `;
+    document.querySelector(".header")?.append(panel);
+
+    const input = panel.querySelector("#header-search-input");
+    const results = panel.querySelector(".header-search-results");
+    let posts = [];
+    let searchTimer;
+
+    const renderResults = (query) => {
+        const normalizedQuery = query.trim().toLowerCase();
+        results.replaceChildren();
+        if (!normalizedQuery) {
+            return;
+        }
+
+        const matches = posts
+            .filter((post) => {
+                const haystack = [
+                    post.title,
+                    post.permalink,
+                    post.summary,
+                    post.content,
+                ].join(" ").toLowerCase();
+                return haystack.includes(normalizedQuery);
+            })
+            .slice(0, 8);
+
+        matches.forEach((post) => {
+            const item = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = post.permalink;
+            link.textContent = post.title;
+            item.append(link);
+            results.append(item);
+        });
+    };
+
+    const openPanel = (event) => {
+        event.preventDefault();
+        const mobileToggle = document.querySelector(".mobile-menu-toggle[aria-expanded='true']");
+        mobileToggle?.click();
+        panel.hidden = false;
+        input.focus();
+    };
+
+    searchLinks.forEach((link) => link.addEventListener("click", openPanel));
+    input.addEventListener("input", () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => renderResults(input.value), 120);
+    });
+
+    panel.querySelector("form").addEventListener("submit", (event) => {
+        event.preventDefault();
+        renderResults(input.value);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !panel.hidden) {
+            panel.hidden = true;
+            input.value = "";
+            results.replaceChildren();
+        }
+    });
+
+    fetch("/index.json", { credentials: "omit" })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Search index load failed: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            posts = Array.isArray(data) ? data : [];
+        })
+        .catch((error) => console.error(error));
+})();
+
+(() => {
+    const menu = document.querySelector("#menu");
+    if (!menu) {
+        return;
+    }
+
+    const hiddenItems = [...menu.querySelectorAll("a[href$='/categories/'], a[href$='/archives/'], a[href$='/search/']")]
+        .map((link) => link.closest("li"))
+        .filter(Boolean);
+    if (!hiddenItems.length) {
+        return;
+    }
+
+    const dropdown = document.createElement("ul");
+    dropdown.className = "mobile-menu-extra";
+    dropdown.id = "mobile-menu-extra";
+    dropdown.setAttribute("aria-label", "More navigation");
+    hiddenItems.forEach((item) => dropdown.append(item));
+    menu.parentElement.append(dropdown);
+
+    const toggle = document.createElement("button");
+    toggle.className = "mobile-menu-toggle";
+    toggle.type = "button";
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-controls", "mobile-menu-extra");
+    toggle.setAttribute("aria-label", "Open more navigation");
+    toggle.innerHTML = "<span></span><span></span><span></span>";
+    menu.parentElement.append(toggle);
+
+    const setExpanded = (expanded) => {
+        dropdown.classList.toggle("mobile-menu-expanded", expanded);
+        toggle.setAttribute("aria-expanded", String(expanded));
+        toggle.setAttribute("aria-label", expanded ? "Close more navigation" : "Open more navigation");
+    };
+
+    toggle.addEventListener("click", () => {
+        setExpanded(!dropdown.classList.contains("mobile-menu-expanded"));
+    });
+})();

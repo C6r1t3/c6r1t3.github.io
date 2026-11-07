@@ -1,1 +1,5 @@
-<link rel="preload" href="{{ "index.json" | relURL }}" as="fetch" type="application/json">
+<link rel="preload" href="{{ "index.json" | relURL }}" as="fetch" type="application/json" fetchpriority="high" crossorigin="anonymous">
+<link rel="icon" type="image/png" sizes="48x48" href="{{ "icon.png" | relURL }}">
+{{- if eq .Section "posts" }}
+<link rel="preconnect" href="https://giscus.app">
+{{- end }}

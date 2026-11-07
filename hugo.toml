@@ -26,6 +26,12 @@ ShowPostNavLinks = true
 description = 'CTF writeups and security notes. Investigate. Analyze. Document.'
 comments = true
 
+[params.assets]
+favicon = 'icon.png'
+favicon16x16 = 'icon.png'
+favicon32x32 = 'icon.png'
+apple_touch_icon = 'icon.png'
+
 [params.label]
 text = 'C6r1t3'
 
