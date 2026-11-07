@@ -1,14 +1,22 @@
 (() => {
     const colorQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const themeModeKey = "theme-mode";
 
-    const applySystemTheme = () => {
-        if (!localStorage.getItem("pref-theme")) {
+    const applySystemTheme = (force = false) => {
+        if (force || localStorage.getItem(themeModeKey) !== "manual") {
+            localStorage.removeItem("pref-theme");
+            localStorage.setItem(themeModeKey, "system");
             document.documentElement.dataset.theme = colorQuery.matches ? "dark" : "light";
         }
     };
 
     applySystemTheme();
-    colorQuery.addEventListener("change", applySystemTheme);
+    colorQuery.addEventListener("change", () => applySystemTheme(true));
+
+    const themeToggle = document.querySelector("#theme-toggle");
+    themeToggle?.addEventListener("click", () => {
+        localStorage.setItem(themeModeKey, "manual");
+    }, { capture: true });
 })();
 
 (() => {

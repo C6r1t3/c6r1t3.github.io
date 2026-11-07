@@ -1,5 +1,16 @@
 <link rel="preload" href="{{ "index.json" | relURL }}" as="fetch" type="application/json" fetchpriority="high" crossorigin="anonymous">
 <link rel="icon" type="image/png" sizes="48x48" href="{{ "icon.png" | relURL }}">
+<script>
+    (() => {
+        const mode = localStorage.getItem("theme-mode");
+        if (mode !== "manual") {
+            localStorage.removeItem("pref-theme");
+            localStorage.setItem("theme-mode", "system");
+            document.documentElement.dataset.theme =
+                window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+    })();
+</script>
 {{- if eq .Section "posts" }}
 <link rel="preconnect" href="https://giscus.app">
 {{- end }}
